@@ -16,18 +16,20 @@
   padding: 8px;
 }
 
-.chatinput button {
+.send-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #0b3de0;
-  border: none;
   color: white;
-  padding: 8px 12px;
+  padding: 8px;
   margin-left: 8px;
-  border-radius: 20px;
-  font-weight: 500;
+  border-radius: 50%;
   cursor: pointer;
   transition: background 0.2s ease-in-out;
 }
 
-.chatinput button:hover {
+.send-icon:hover {
   background-color: #1669c1;
 }
+

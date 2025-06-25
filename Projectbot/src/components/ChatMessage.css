@@ -12,8 +12,8 @@
 
 .chat-message.user {
   align-self: flex-end;
-  background: #e0f7fa;
-  color: #004d40;
+  background: hwb(187 88% 2%);
+  color: hsl(170, 100%, 15%);
   border-bottom-right-radius: 4px;
 }
 

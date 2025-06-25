@@ -3,13 +3,13 @@ import { sendMessage } from './api/chatApi';
 import ChatMessage from './ChatMessage';
 import ChatInput from './ChatInput';
 import Loader from './Loader';
-
-
-import './ChatWindow.css'
+import doodleBackground from '../assets/doodleBackground.jpg';
+import './ChatWindow.css';
 
 const ChatWindow = () => {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -22,6 +22,11 @@ const ChatWindow = () => {
 
   const handleSend = async (userText) => {
     if (!userText.trim()) return;
+    
+    if (!hasInteracted) {
+      setHasInteracted(true);
+    }
+    
     setMessages((prev) => [...prev, { sender: 'user', text: userText }]);
     setLoading(true);
 
@@ -29,7 +34,7 @@ const ChatWindow = () => {
       const res = await sendMessage(userText);
       setMessages((prev) => [...prev, { sender: 'bot', text: res.reply }]);
     } catch {
-      setMessages((prev) => [...prev, { sender: 'bot', text: '❌ Error fetching response.' }]);
+      setMessages((prev) => [...prev, { sender: 'bot', text: 'Error fetching response.' }]);
     } finally {
       setLoading(false);
     }
@@ -37,7 +42,18 @@ const ChatWindow = () => {
 
   return (
     <div className="chat-window">
+      <div className="chat-header">
+        <img src="/logo.png" alt="Logo" className="logo" />
+      </div>
       <div className="chat-messages">
+        {!hasInteracted && (
+          <div className="welcome-container" style={{ backgroundImage: `url(${doodleBackground})` }}>
+            <div className="welcome-message">
+              <h2>Welcome!</h2>
+              <p>How can I help you today?</p>
+            </div>
+          </div>
+        )}
         {messages.map((msg, idx) => (
           <ChatMessage key={idx} sender={msg.sender} text={msg.text} />
         ))}
