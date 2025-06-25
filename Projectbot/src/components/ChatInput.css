@@ -1,11 +1,17 @@
+
 .chatinput {
   display: flex;
   align-items: center;
-  border: 1px solid #d0d0d0;
+  width: 100%;               /* Make it full width */
+  margin: 0;                 /* Remove any default margin */
+  padding: 8px 12px;
+  border: 1px solid #af9e9e;
   border-radius: 24px;
-  padding: 10px 16px;
-  background: #fff;
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;   /* Ensures padding doesn’t exceed width */
 }
+
 
 .chatinput input {
   flex: 1;

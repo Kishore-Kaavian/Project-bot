@@ -1,0 +1,35 @@
+.chat-header {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 20px;
+}
+
+.chat-title {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 30px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+
+}
+
+.chat-icon {
+  width: 60px;
+  height: 40px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.chat-icon:hover {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.chat-subtitle {
+  font-size: 14px;
+  margin-left: 20px;
+  color: #140d0d;
+  margin: 4px 0 0 44px; 
+  font-family :Arial, Helvetica, sans-serif
+}

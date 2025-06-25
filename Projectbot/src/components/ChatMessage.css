@@ -4,12 +4,15 @@
   padding: 10px 14px;
   border-radius: 18px;
   font-size: 15px;
-  line-height: 1.4;
+  line-height: 1.5;
   word-wrap: break-word;
   white-space: pre-wrap;
-  animation: fadeIn 0.3s ease;
+  animation: rotateIn 0.4s ease-out both;
+  transition: background 0.3s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
+/* User message */
 .chat-message.user {
   align-self: flex-end;
   background: #e0f7fa;
@@ -17,6 +20,7 @@
   border-bottom-right-radius: 4px;
 }
 
+/* Bot message */
 .chat-message.bot {
   align-self: flex-start;
   background: #ffffff;
@@ -25,13 +29,14 @@
   border: 1px solid #e0e0e0;
 }
 
-@keyframes fadeIn {
-  from {
+/* Rotate in on first render */
+@keyframes rotateIn {
+  0% {
     opacity: 0;
-    transform: translateY(8px);
+    transform: rotate(-3deg) translateY(12px);
   }
-  to {
+  100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: rotate(0deg) translateY(0);
   }
 }

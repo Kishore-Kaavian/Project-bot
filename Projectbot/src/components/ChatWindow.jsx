@@ -20,20 +20,23 @@ const ChatWindow = () => {
     scrollToBottom();
   }, [messages, loading]);
 
-  const handleSend = async (userText) => {
-    if (!userText.trim()) return;
-    setMessages((prev) => [...prev, { sender: 'user', text: userText }]);
-    setLoading(true);
+const handleSend = async (userText) => {
+  if (!userText.trim()) return;
+  setMessages((prev) => [...prev, { sender: 'user', text: userText }]);
+  setLoading(true);
 
-    try {
-      const res = await sendMessage(userText);
-      setMessages((prev) => [...prev, { sender: 'bot', text: res.reply }]);
-    } catch {
-      setMessages((prev) => [...prev, { sender: 'bot', text: '❌ Error fetching response.' }]);
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    const res = await sendMessage(userText);
+    console.log(res); // logs full response
+    setMessages((prev) => [...prev, { sender: 'bot', text: res.response }]);
+  } catch (error) {
+    console.error('Error in handleSend:', error);
+    setMessages((prev) => [...prev, { sender: 'bot', text: 'Oops something went wrong..' }]);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="chat-window">
@@ -45,6 +48,7 @@ const ChatWindow = () => {
         <div ref={messagesEndRef} />
       </div>
       <ChatInput onSend={handleSend} />
+     <p className="chat-note"><strong>QuickHr </strong>can mistake due to Beta Version</p>
     </div>
   );
 };

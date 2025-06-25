@@ -1,11 +1,19 @@
 import ChatWindow from '../components/ChatWindow';
+import './ChatPage.css';
 
 const ChatPage = () => {
   return (
-    <div className="chat-page">
-      <h1 className="chat-title">Project bot</h1>
-      <ChatWindow />
-    </div>
+   <div className="chat-page">
+  <div className="chat-header">
+    <h1 className="chat-title">
+      <img src="/Rocket.png" alt="Rocket" className="chat-icon" />
+      Quick HR
+    </h1>
+    <p className="chat-subtitle">Smarter conversations Faster resolutions</p>
+  </div>
+  <ChatWindow />
+</div>
+
   );
 };
 
