@@ -1,14 +1,17 @@
-const API_URL = 'https://your-backend.com/api/chat'; // Replace with your real endpoint
+const API_URL = 'http://127.0.0.1:8001/prompt/chat';
 
-export async function sendMessage(message) {
+export async function sendMessage(prompt) {
   const response = await fetch(API_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ message }),
+    body: JSON.stringify({ prompt }),
   });
 
   if (!response.ok) throw new Error('Failed to fetch');
-  return await response.json(); // { reply: 'Bot response here' }
+
+  const data = await response.json();
+  return data;
 }
+sendMessage();
