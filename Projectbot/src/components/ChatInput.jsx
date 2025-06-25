@@ -25,7 +25,7 @@ const ChatInput = ({ onSend }) => {
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={handleKeyDown}
-        placeholder="Type your message..."
+        placeholder="Ask QuickHR..."
       />
       <div className="send-icon" onClick={handleSubmit} role="button" tabIndex={0}>
         <FiSend size={18} />

@@ -39,17 +39,25 @@ const handleSend = async (userText) => {
 
 
   return (
-    <div className="chat-window">
-      <div className="chat-messages">
-        {messages.map((msg, idx) => (
-          <ChatMessage key={idx} sender={msg.sender} text={msg.text} />
-        ))}
-        {loading && <Loader />}
-        <div ref={messagesEndRef} />
+   <div className="chat-window">
+  <div className="chat-messages">
+    {messages.length === 0 && !loading && (
+      <div className="welcome-message">
+         <img src="/Rocket.png" alt="Rocket" className="chat-icon-doodle" />
+      <h2>Welcome to <strong>QuickHR</strong>. How can I assist you today? </h2> 
       </div>
-      <ChatInput onSend={handleSend} />
-     <p className="chat-note"><strong>QuickHr </strong>can mistake due to Beta Version</p>
-    </div>
+    )}
+    {messages.map((msg, idx) => (
+      <ChatMessage key={idx} sender={msg.sender} text={msg.text} />
+    ))}
+    {loading && <Loader />}
+    <div ref={messagesEndRef} />
+  </div>
+
+  <ChatInput onSend={handleSend} />
+  <p className="chat-note"><strong>QuickHR</strong> can make mistakes due to Beta version</p>
+</div>
+
   );
 };
 
